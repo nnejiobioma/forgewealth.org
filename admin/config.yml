@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: nnejiobioma/forgewealth.org
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "assets/uploads"
+
+site_url: "https://forgewealth.org"
+display_url: "https://forgewealth.org"
+logo_url: "https://forgewealth.org/assets/logo.png"
+
+collections:
+  - name: "reviews"
+    label: "Affiliate & Review Cards"
+    label_singular: "Review Card"
+    folder: "content/reviews"
+    create: true
+    slug: "{{slug}}"
+    format: "json"
+    editor:
+      preview: true
+    fields:
+      - { label: "Product / Service Title", name: "title", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: [
+          { label: "Web Hosting", value: "hosting" },
+          { label: "Laptops & PCs", value: "laptops" },
+          { label: "Audio & Headphones", value: "audio" },
+          { label: "Accessories & Desk Setup", value: "accessories" }
+        ], default: "laptops" }
+      - { label: "Rating Score (out of 10)", name: "score", widget: "string", default: "9.5" }
+      - { label: "Price Display", name: "price", widget: "string", hint: "e.g. $2.99/mo or $1,499.00" }
+      - { label: "Original Price (Optional)", name: "original_price", widget: "string", required: false, hint: "e.g. $11.99/mo" }
+      - { label: "Affiliate Link (Target URL)", name: "affiliate_url", widget: "string", hint: "Your affiliate tracking link (Hostinger, Amazon, etc.)" }
+      - { label: "Coupon Code (Optional)", name: "coupon_code", widget: "string", required: false, default: "STRDEAL" }
+      - { label: "Badge Label (Optional)", name: "badge", widget: "string", required: false, hint: "e.g. Editor's Choice, Top Pick, Best Value" }
+      - { label: "Card Thumbnail Image", name: "thumbnail", widget: "image", default: "assets/tech-gear.jpg" }
+      - { label: "Short Summary", name: "summary", widget: "text" }
+      - { label: "Pros", name: "pros", widget: "list", field: { label: "Pro Point", name: "pro", widget: "string" } }
+      - { label: "Cons", name: "cons", widget: "list", field: { label: "Con Point", name: "con", widget: "string" } }
+      - { label: "Full Review Content (Markdown)", name: "body", widget: "markdown", required: false }
+
+  - name: "settings"
+    label: "Site Settings & Promo Banner"
+    files:
+      - file: "content/settings.json"
+        name: "banner"
+        label: "Top Deal Banner"
+        fields:
+          - { label: "Announcement Text", name: "banner_text", widget: "string", default: "Hostinger Flash Sale: Get up to 78% OFF + Free Domain & SSL" }
+          - { label: "Coupon Code", name: "coupon_code", widget: "string", default: "STRDEAL" }
+          - { label: "Deal Link", name: "deal_link", widget: "string", default: "review-hostinger.html" }

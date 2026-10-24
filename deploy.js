@@ -130,19 +130,25 @@ async function deploy() {
 
   console.log(`[2] Credentials received. Uploading site files to public_html...`);
 
-  const filesToUpload = [
-    { rel: 'index.html', local: path.join(__dirname, 'index.html') },
-    { rel: 'review-hostinger.html', local: path.join(__dirname, 'review-hostinger.html') },
-    { rel: 'hosting.html', local: path.join(__dirname, 'hosting.html') },
-    { rel: 'gadgets.html', local: path.join(__dirname, 'gadgets.html') },
-    { rel: 'about.html', local: path.join(__dirname, 'about.html') },
-    { rel: 'disclosure.html', local: path.join(__dirname, 'disclosure.html') },
-    { rel: 'styles.css', local: path.join(__dirname, 'styles.css') },
-    { rel: 'app.js', local: path.join(__dirname, 'app.js') },
-    { rel: 'assets/logo.png', local: path.join(__dirname, 'assets', 'logo.png') },
-    { rel: 'assets/hosting-cloud.jpg', local: path.join(__dirname, 'assets', 'hosting-cloud.jpg') },
-    { rel: 'assets/tech-gear.jpg', local: path.join(__dirname, 'assets', 'tech-gear.jpg') }
-  ];
+  // Recursively collect all project files, excluding hidden files and system secrets
+  function getFiles(dir, base = '') {
+    let results = [];
+    const list = fs.readdirSync(dir);
+    for (const item of list) {
+      if (item.startsWith('.') || item === 'node_modules' || item === 'deploy.js' || item === 'hostinger-cli.js') continue;
+      const fullPath = path.join(dir, item);
+      const relPath = base ? `${base}/${item}` : item;
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        results = results.concat(getFiles(fullPath, relPath));
+      } else {
+        results.push({ rel: relPath, local: fullPath });
+      }
+    }
+    return results;
+  }
+
+  const filesToUpload = getFiles(__dirname);
 
   for (const f of filesToUpload) {
     process.stdout.write(`Uploading ${f.rel}... `);

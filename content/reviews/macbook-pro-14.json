@@ -1,0 +1,22 @@
+{
+  "title": "Apple MacBook Pro 14-Inch: The Ultimate Creator Workhorse",
+  "category": "laptops",
+  "score": "9.6",
+  "price": "$1,499.00",
+  "original_price": "$1,599.00",
+  "affiliate_url": "https://amazon.com",
+  "coupon_code": "",
+  "badge": "Top Creator Pick",
+  "thumbnail": "assets/tech-gear.jpg",
+  "summary": "With class-leading power efficiency, brilliant Liquid Retina XDR screen, and up to 22 hours of real-world battery life.",
+  "pros": [
+    "Unmatched battery longevity & cool thermals",
+    "Industry-standard color-accurate mini-LED",
+    "MagSafe 3, HDMI 2.1, and SD card slot"
+  ],
+  "cons": [
+    "Expensive RAM & SSD upgrade tiers",
+    "Not upgradeable after purchase"
+  ],
+  "body": "The MacBook Pro 14 continues to set the benchmark for high-performance laptops."
+}
