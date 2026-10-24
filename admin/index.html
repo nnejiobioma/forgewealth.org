@@ -6,21 +6,142 @@
   <title>Smart Tech Reviews | Content Management Dashboard</title>
   <link rel="icon" type="image/png" href="../assets/logo.png">
   <style>
-    /* Clean Styling for Admin Login Helper */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
       background-color: #f8fafc;
     }
+    /* Token Auth Helper Overlay */
+    .token-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      padding: 1.5rem;
+    }
+    .token-modal-overlay.active {
+      display: flex;
+    }
+    .token-modal {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2.25rem;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      border: 1px solid #e2e8f0;
+    }
+    .token-modal h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.4rem;
+      color: #0f172a;
+    }
+    .token-modal p {
+      font-size: 0.925rem;
+      color: #64748b;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+    .token-input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      outline: none;
+    }
+    .token-input:focus {
+      border-color: #0062ff;
+      box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.15);
+    }
+    .btn-submit {
+      width: 100%;
+      background: #0062ff;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover {
+      background: #0050d4;
+    }
+    .token-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #0062ff;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Direct GitHub Token Authentication Modal -->
+  <div class="token-modal-overlay" id="tokenOverlay">
+    <div class="token-modal">
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+        <img src="../assets/logo.png" alt="Logo" width="36" height="36">
+        <h2 style="margin: 0;">Connect to GitHub</h2>
+      </div>
+      <p>
+        Because your site is hosted directly on <strong>Hostinger</strong>, connect securely using a GitHub Personal Access Token (with <code>repo</code> access). You only need to enter this once.
+      </p>
+
+      <form id="tokenForm">
+        <label for="ghToken" style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.4rem;">
+          GitHub Personal Access Token:
+        </label>
+        <input type="password" id="ghToken" class="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" required autocomplete="off">
+        <button type="submit" class="btn-submit">Log In to Dashboard</button>
+      </form>
+
+      <div style="text-align: center;">
+        <a href="https://github.com/settings/tokens/new?scopes=repo&description=DecapCMS+SmartTechReviews" target="_blank" rel="noopener noreferrer" class="token-link">
+          &rarr; Generate a GitHub Token in 1-Click (Checks 'repo' automatically)
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Include the Decap CMS script -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 
   <script>
-    // Register custom styling and preview components if needed
     CMS.registerPreviewStyle("../styles.css");
+
+    // Check if user is already authenticated
+    const hasDecapUser = localStorage.getItem('decap-cms-user') || localStorage.getItem('netlify-cms-user');
+
+    if (!hasDecapUser) {
+      // Show token prompt
+      const overlay = document.getElementById('tokenOverlay');
+      overlay.classList.add('active');
+
+      document.getElementById('tokenForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const token = document.getElementById('ghToken').value.trim();
+        if (token) {
+          const authData = JSON.stringify({
+            token: token,
+            backendName: 'github'
+          });
+          localStorage.setItem('decap-cms-user', authData);
+          localStorage.setItem('netlify-cms-user', authData);
+          overlay.classList.remove('active');
+          window.location.reload();
+        }
+      });
+    }
   </script>
 </body>
 </html>
