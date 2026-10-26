@@ -26,13 +26,46 @@ function initMobileMenu() {
   const mainNav = document.getElementById('mainNav');
 
   if (toggleBtn && mainNav) {
-    toggleBtn.addEventListener('click', () => {
+    function closeMenu() {
+      mainNav.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       mainNav.classList.toggle('active');
       const isExpanded = mainNav.classList.contains('active');
       toggleBtn.setAttribute('aria-expanded', isExpanded);
       toggleBtn.innerHTML = isExpanded 
         ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
         : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+    });
+
+    // Close when a nav link is clicked
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mainNav.classList.contains('active') && !mainNav.contains(e.target) && !toggleBtn.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+
+    // Reset when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && mainNav.classList.contains('active')) {
+        closeMenu();
+      }
     });
   }
 }
