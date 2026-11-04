@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageMetaTitle">Review &amp; Landing Page | Smart Tech Reviews</title>
+  <meta name="description" id="pageMetaDesc" content="In-depth lab review, benchmark test results, pros & cons, and verified deals.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Special promotion">
+    <div class="container">
+      <span class="announcement-tag">Lab Verified Deals</span>
+      <span id="topBannerText">2026 Tech &amp; Cloud Hardware Drops: Save up to <strong>83% OFF</strong> Top-Rated Gear &amp; Hosting</span>
+      <span style="opacity: 0.5;">|</span>
+      <span>Promo Code: <strong id="topBannerCoupon" style="color: #6ee7b7; font-family: var(--font-mono);">STRDEAL</strong></span>
+      <a href="gadgets.html" id="topBannerLink" class="announcement-link">
+        Explore Top Picks &rarr;
+      </a>
+    </div>
+  </aside>
+
+  <!-- Reader Disclosure -->
+  <div class="affiliate-disclosure-banner">
+    <div class="container">
+      <span>Smart Tech Reviews is reader-supported. When you purchase through our links, we may earn an affiliate commission at no extra cost to you.</span>
+      <a href="disclosure.html">Learn how we test &amp; disclose &rarr;</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo-link">
+        <img src="assets/logo.png" alt="Smart Tech Reviews" class="logo-img" width="48" height="48">
+        <div class="logo-text-group">
+          <span class="logo-title">SMART TECH <span>REVIEWS</span></span>
+          <span class="logo-tagline">Independent Lab &bull; 2026</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="gadgets.html" class="nav-link">Tech &amp; Gadgets</a></li>
+          <li><a href="hosting.html" class="nav-link">Cloud &amp; Hosting</a></li>
+          <li><a href="about.html" class="nav-link">About &amp; Lab</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="search-toggle-btn" type="button" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <span>Search...</span>
+          </button>
+          <a href="admin/index.html" class="btn btn-secondary btn-sm">+ New Post</a>
+        </div>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuToggle" aria-label="Open mobile menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Dynamic Post Hero -->
+    <section class="hero-section" style="padding: 4rem 0 3.5rem;">
+      <div class="container">
+        <div class="hero-badge-row">
+          <a href="index.html" style="color: #a1a1aa; font-family: var(--font-mono); font-size: 0.78rem;">&larr; All Reviews</a>
+          <span class="badge-pill badge-pill-blue" id="postCategoryBadge">Review</span>
+          <span class="badge-pill badge-pill-green" id="postAwardBadge">Verified Lab Pick</span>
+        </div>
+
+        <h1 class="hero-title" id="postTitle" style="max-width: 920px; margin-bottom: 1rem;">
+          Loading Landing Page...
+        </h1>
+
+        <p class="hero-description" id="postSummary" style="max-width: 780px; margin-bottom: 1.5rem;">
+          Please wait while we load the full benchmark report and verified deals.
+        </p>
+
+        <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.85rem; color: #a1a1aa; font-family: var(--font-mono);">
+          <span>By <strong style="color: #ffffff;">STR Benchmark Lab</strong></span>
+          <span>&bull;</span>
+          <span>Lab Rating: <strong id="postHeroScore" style="color: #6ee7b7;">9.5 / 10</strong></span>
+          <span>&bull;</span>
+          <span>Verified 2026 Edition</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main 2-Column Landing Page Content -->
+    <section class="section" style="padding-top: 3.5rem;">
+      <div class="container">
+        <div class="post-layout-grid">
+          <!-- Left Column: Full Review & Landing Page Body -->
+          <article class="post-main-col">
+            <img id="postHeroImage" src="assets/tech-gear.jpg" alt="Product photo" class="post-featured-image">
+
+            <!-- Editor Verdict Box -->
+            <div class="post-verdict-box">
+              <span class="post-verdict-label">STR Lab Verdict</span>
+              <h3 id="postVerdictTitle" style="margin-bottom: 0.5rem;">Why It Stands Out</h3>
+              <p id="postVerdictSummary" style="color: var(--text-muted); margin: 0;"></p>
+            </div>
+
+            <!-- Pros & Cons Grid -->
+            <div class="post-pros-cons-grid" id="postProsConsSection">
+              <div class="post-pros-box">
+                <h4>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  What We Like (Pros)
+                </h4>
+                <ul id="postProsList"></ul>
+              </div>
+              <div class="post-cons-box">
+                <h4>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                  Watch Out For (Cons)
+                </h4>
+                <ul id="postConsList"></ul>
+              </div>
+            </div>
+
+            <!-- Rich Markdown Body -->
+            <div class="post-body-content" id="postBodyContent"></div>
+
+            <!-- Bottom Conversion Banner -->
+            <div class="post-bottom-cta">
+              <div>
+                <span class="badge-pill badge-pill-green" style="margin-bottom: 0.6rem;">Verified Best Price</span>
+                <h3 id="postBottomTitle">Ready to Claim This Deal?</h3>
+                <p id="postBottomPriceText">Check live availability and partner discounts today.</p>
+              </div>
+              <a id="postBottomCtaBtn" href="#" target="_blank" rel="noopener sponsored" class="btn btn-green btn-lg">
+                Check Best Price &rarr;
+              </a>
+            </div>
+          </article>
+
+          <!-- Right Sticky Conversion Sidebar -->
+          <aside class="post-sidebar">
+            <div class="featured-deal-card" style="box-shadow: var(--shadow-lg);">
+              <span class="deal-card-badge" id="sidebarBadge">Top Pick</span>
+
+              <div class="deal-card-header" style="margin-top: 0.5rem;">
+                <div class="deal-brand">
+                  <div class="deal-brand-logo" id="sidebarLogo">★</div>
+                  <div class="deal-brand-meta">
+                    <h4 id="sidebarTitle" style="font-size: 1.05rem;">Featured Offer</h4>
+                    <p id="sidebarCategory">Verified Partner</p>
+                  </div>
+                </div>
+                <div class="deal-score-badge">
+                  <strong id="sidebarScore">9.5</strong>
+                  <span>Score</span>
+                </div>
+              </div>
+
+              <div class="deal-price-block">
+                <div class="deal-pricing-left">
+                  <span class="deal-price-strike" id="sidebarOriginalPrice"></span>
+                  <span class="deal-price-main" id="sidebarPrice" style="font-size: 1.85rem;">$0.00</span>
+                </div>
+                <span class="deal-discount-pill">Verified</span>
+              </div>
+
+              <!-- Optional Coupon Box -->
+              <div class="deal-coupon-box" id="sidebarCouponBox" style="display: none;">
+                <div class="coupon-info">
+                  <span class="coupon-label">Exclusive Promo Code</span>
+                  <span class="coupon-code-text" id="sidebarCouponCode">STRDEAL</span>
+                </div>
+                <button class="copy-btn" id="sidebarCopyBtn" data-coupon="STRDEAL" type="button">
+                  Copy Code
+                </button>
+              </div>
+
+              <a id="sidebarCtaBtn" href="#" target="_blank" rel="noopener sponsored" class="btn btn-primary" style="width: 100%; margin-bottom: 0.85rem;">
+                Claim Deal / Best Price &rarr;
+              </a>
+
+              <p style="font-size: 0.76rem; color: var(--text-light); text-align: center; margin: 0;">
+                ✓ Direct verified partner link &bull; Reader-supported
+              </p>
+            </div>
+
+            <!-- More Landing Pages Box -->
+            <div style="background: #ffffff; border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 1.5rem;">
+              <h4 style="font-size: 1rem; margin-bottom: 1rem;">More Landing Pages &amp; Reviews</h4>
+              <div id="relatedPostsList" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2026 Smart Tech Reviews. All rights reserved.</p>
+        <p><a href="index.html">Return to Home &rarr;</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search dialog">
+    <div class="modal-content">
+      <div class="modal-search-header">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand-blue)" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="modal-search-input" id="modalSearchInput" placeholder="Type to search laptops, headphones, cloud hosting...">
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close search">&times;</button>
+      </div>
+      <div class="modal-results-list" id="modalResultsList">
+        <p style="text-align: center; color: var(--text-muted); padding: 2rem 0;">
+          Type to search 150+ reviews, comparisons, deals and tech gadgets...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

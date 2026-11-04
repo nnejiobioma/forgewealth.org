@@ -12,8 +12,9 @@ logo_url: "https://forgewealth.org/assets/logo.png"
 
 collections:
   - name: "reviews"
-    label: "Affiliate & Review Cards"
-    label_singular: "Review Card"
+    label: "Landing Pages & Review Posts"
+    label_singular: "Landing Page Post"
+    description: "Create full affiliate landing pages and review posts. Once published, your post automatically appears on the site and gets its own dedicated landing page at /post.html?slug=your-post-slug"
     folder: "content/reviews"
     create: true
     slug: "{{slug}}"
@@ -21,24 +22,27 @@ collections:
     editor:
       preview: true
     fields:
-      - { label: "Product / Service Title", name: "title", widget: "string" }
+      - { label: "Landing Page Headline / Title", name: "title", widget: "string", hint: "e.g. Apple MacBook Pro 14-Inch: The Ultimate Creator Workhorse" }
       - { label: "Category", name: "category", widget: "select", options: [
-          { label: "Cloud & Hosting", value: "hosting" },
           { label: "Laptops & PCs", value: "laptops" },
           { label: "Audio & Headphones", value: "audio" },
-          { label: "Accessories & Desk Setup", value: "accessories" }
+          { label: "Accessories & Desk Setup", value: "accessories" },
+          { label: "Cloud & Hosting", value: "hosting" },
+          { label: "Software & SaaS", value: "software" },
+          { label: "Special Deals", value: "deals" }
         ], default: "laptops" }
-      - { label: "Rating Score (out of 10)", name: "score", widget: "string", default: "9.5" }
-      - { label: "Price Display", name: "price", widget: "string", hint: "e.g. $2.99/mo or $1,499.00" }
-      - { label: "Original Price (Optional)", name: "original_price", widget: "string", required: false, hint: "e.g. $17.99/mo" }
-      - { label: "Affiliate Link (Target URL)", name: "affiliate_url", widget: "string", hint: "Your affiliate tracking link (Amazon, SiteGround, Cloudways, etc.)" }
-      - { label: "Coupon Code (Optional)", name: "coupon_code", widget: "string", required: false, default: "STRDEAL" }
-      - { label: "Badge Label (Optional)", name: "badge", widget: "string", required: false, hint: "e.g. Editor's Choice, Top Pick, Best Value" }
-      - { label: "Card Thumbnail Image", name: "thumbnail", widget: "image", default: "assets/tech-gear.jpg" }
-      - { label: "Short Summary", name: "summary", widget: "text" }
-      - { label: "Pros", name: "pros", widget: "list", field: { label: "Pro Point", name: "pro", widget: "string" } }
-      - { label: "Cons", name: "cons", widget: "list", field: { label: "Con Point", name: "con", widget: "string" } }
-      - { label: "Full Review Content (Markdown)", name: "body", widget: "markdown", required: false }
+      - { label: "Lab Rating Score (out of 10)", name: "score", widget: "string", default: "9.5" }
+      - { label: "Award / Highlight Badge", name: "badge", widget: "string", required: false, default: "Editor's Choice", hint: "e.g. #1 Editor's Choice, Top Creator Pick, Best Value" }
+      - { label: "Current / Promo Price", name: "price", widget: "string", hint: "e.g. $2.99/mo or $1,499.00" }
+      - { label: "Original Strikethrough Price (Optional)", name: "original_price", widget: "string", required: false, hint: "e.g. $17.99/mo or $1,599.00" }
+      - { label: "Affiliate Link (Target URL)", name: "affiliate_url", widget: "string", hint: "Your affiliate tracking link where visitors go when clicking the CTA button" }
+      - { label: "CTA Button Text (Optional)", name: "cta_text", widget: "string", required: false, default: "Claim Deal / Check Best Price →" }
+      - { label: "Coupon Code (Optional)", name: "coupon_code", widget: "string", required: false, hint: "Leave blank if no coupon code is needed, or enter e.g. STRDEAL" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image", default: "assets/tech-gear.jpg" }
+      - { label: "Hero Summary & Verdict", name: "summary", widget: "text", hint: "2-3 sentence summary shown in the hero section, verdict box, and review card" }
+      - { label: "Pros (What We Like)", name: "pros", widget: "list", field: { label: "Pro Point", name: "pro", widget: "string" } }
+      - { label: "Cons (Watch Out For)", name: "cons", widget: "list", field: { label: "Con Point", name: "con", widget: "string" } }
+      - { label: "Full Landing Page Body (Markdown)", name: "body", widget: "markdown", required: false, hint: "Write your full review or landing page copy using headings (##, ###), bold text, quotes (>), bullet lists, and links." }
 
   - name: "settings"
     label: "Site Settings & Promo Banner"
