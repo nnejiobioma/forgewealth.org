@@ -22,7 +22,6 @@ const VIEWPORTS = [
 
 const PAGES = [
   { name: 'Homepage', url: 'http://127.0.0.1:3000/' },
-  { name: 'Hostinger Review', url: 'http://127.0.0.1:3000/review-hostinger.html' },
   { name: 'Hosting Hub', url: 'http://127.0.0.1:3000/hosting.html' },
   { name: 'Tech & Gadgets', url: 'http://127.0.0.1:3000/gadgets.html' },
   { name: 'About & Lab', url: 'http://127.0.0.1:3000/about.html' },

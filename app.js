@@ -3,8 +3,8 @@
  * Features:
  * - Search Filter & Modal
  * - 1-Click Affiliate Coupon Copy & Toast Notification
- * - Interactive Hosting Plan Finder Quiz
- * - Interactive Hosting Savings Calculator
+ * - Interactive Cloud Plan Finder Quiz
+ * - Interactive Cloud Savings Calculator
  * - Category Tab Filtering
  * - Mobile Menu & Sticky Navigation
  */
@@ -75,7 +75,6 @@ function initMobileMenu() {
 // ----------------------------------------------------
 function initCouponCopy() {
   const copyButtons = document.querySelectorAll('.copy-btn');
-  const toast = document.getElementById('toastNotification');
 
   copyButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -96,7 +95,6 @@ function initCouponCopy() {
           btn.style.color = '';
         }, 3000);
 
-        // If data-target-url is present, optionally open the affiliate link in new tab
         const affiliateUrl = btn.getAttribute('data-target-url');
         if (affiliateUrl) {
           setTimeout(() => {
@@ -132,20 +130,6 @@ function showToast(message) {
 // ----------------------------------------------------
 const REVIEWS_DATABASE = [
   {
-    title: 'Hostinger Premium Web Hosting Review 2026',
-    category: 'Web Hosting',
-    score: '9.8',
-    url: 'review-hostinger.html',
-    desc: 'Unbeatable value, LiteSpeed web server, free domain & SSL. Best for blogs & startups.'
-  },
-  {
-    title: 'Hostinger Cloud Startup vs Bluehost Cloud',
-    category: 'Web Hosting',
-    score: '9.7',
-    url: 'hosting.html',
-    desc: 'Deep performance comparison: Dedicated IP, 200GB NVMe storage, and 300 websites.'
-  },
-  {
     title: 'Apple MacBook Pro 14" (M3 / M4 Pro)',
     category: 'Laptops',
     score: '9.6',
@@ -153,11 +137,25 @@ const REVIEWS_DATABASE = [
     desc: 'The best creator laptop on the market with 22-hour battery life and Liquid Retina XDR.'
   },
   {
+    title: 'SiteGround GrowBig Managed Hosting Review',
+    category: 'Web Hosting',
+    score: '9.6',
+    url: 'hosting.html#siteground',
+    desc: 'High-speed managed WordPress hosting powered by Google Cloud infrastructure and daily backups.'
+  },
+  {
     title: 'Sony WH-1000XM5 Wireless ANC Headphones',
     category: 'Audio',
     score: '9.5',
     url: 'gadgets.html#sony-headphones',
     desc: 'Industry-leading noise cancellation, ultra-lightweight ergonomic headband, 30hr battery.'
+  },
+  {
+    title: 'Cloudways Managed Cloud Hosting',
+    category: 'Cloud Hosting',
+    score: '9.5',
+    url: 'hosting.html#cloudways',
+    desc: 'Dedicated DigitalOcean & AWS cloud servers with NVMe caching and pay-as-you-go billing.'
   },
   {
     title: 'Anker Prime 20,000mAh 200W Power Bank',
@@ -174,11 +172,11 @@ const REVIEWS_DATABASE = [
     desc: 'Full aluminum CNC body, hot-swappable switches, wireless Bluetooth 5.1 & QMK/VIA support.'
   },
   {
-    title: 'SiteGround GrowBig Hosting Review',
-    category: 'Web Hosting',
-    score: '9.1',
-    url: 'hosting.html#siteground',
-    desc: 'High tier managed WordPress hosting with Google Cloud infrastructure.'
+    title: 'Kinsta Enterprise WordPress Hosting',
+    category: 'Cloud Hosting',
+    score: '9.3',
+    url: 'hosting.html#kinsta',
+    desc: 'Isolated Linux containers with Cloudflare Enterprise edge caching across 35+ data centers.'
   }
 ];
 
@@ -262,7 +260,7 @@ function renderSearchResults(query, container) {
     container.innerHTML = `
       <div style="text-align: center; padding: 2.5rem 1rem;">
         <p style="font-weight: 700; color: var(--dark-slate); font-size: 1.1rem;">No matching reviews found</p>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Try searching for "Hostinger", "Hosting", "Laptops", or "Headphones".</p>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;">Try searching for "MacBook", "Cloudways", "SiteGround", or "Headphones".</p>
       </div>
     `;
     return;
@@ -286,7 +284,7 @@ function renderSearchResults(query, container) {
 }
 
 // ----------------------------------------------------
-// 4. Interactive Hosting Plan Finder Quiz
+// 4. Interactive Cloud Plan Finder Quiz
 // ----------------------------------------------------
 function initHostingQuiz() {
   const quizButtons = document.querySelectorAll('.quiz-opt-btn');
@@ -321,29 +319,29 @@ function initHostingQuiz() {
     resultCard.classList.add('active');
 
     if (quizState.type === 'ecommerce' || quizState.traffic === 'heavy') {
-      resultTitle.textContent = 'Hostinger Cloud Startup Plan';
-      resultDesc.textContent = 'Dedicated IP, 200GB NVMe storage, 3GB RAM, and isolated resources built for serious ecommerce stores and high-traffic sites.';
-      resultPrice.innerHTML = '$7.99 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/month</span> <span style="color:#10b981; font-size:0.85rem; font-weight:700;">(Save 68%)</span>';
-      resultLink.href = 'review-hostinger.html#cloud-startup';
-      resultLink.textContent = 'Claim Hostinger Cloud Deal →';
+      resultTitle.textContent = 'Cloudways Managed Cloud Plan';
+      resultDesc.textContent = 'Dedicated IP, NVMe storage, isolated RAM, and pay-as-you-go scaling built for serious ecommerce stores and high-traffic SaaS sites.';
+      resultPrice.innerHTML = '$14.00 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/month</span> <span style="color:#10b981; font-size:0.85rem; font-weight:700;">(Zero Lock-in)</span>';
+      resultLink.href = 'hosting.html#cloudways';
+      resultLink.textContent = 'View Cloudways Plan →';
     } else if (quizState.type === 'business' || quizState.traffic === 'medium') {
-      resultTitle.textContent = 'Hostinger Business Web Hosting (Editor’s Pick)';
-      resultDesc.textContent = 'Free daily backups, 5X performance boost, free CDN, unlimited SSL, and free domain. Handles up to 100,000 monthly visits effortlessly.';
-      resultPrice.innerHTML = '$3.99 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/month</span> <span style="color:#10b981; font-size:0.85rem; font-weight:700;">(Save 75%)</span>';
-      resultLink.href = 'review-hostinger.html#business-plan';
-      resultLink.textContent = 'Claim Hostinger Business Deal →';
+      resultTitle.textContent = 'SiteGround GrowBig Managed Hosting (Editor’s Pick)';
+      resultDesc.textContent = 'Google Cloud SSD infrastructure, on-demand daily backups, Ultrafast PHP, free CDN, and unlimited SSL. Handles up to 100,000 monthly visits.';
+      resultPrice.innerHTML = '$4.99 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/month</span> <span style="color:#10b981; font-size:0.85rem; font-weight:700;">(Save 82%)</span>';
+      resultLink.href = 'hosting.html#siteground';
+      resultLink.textContent = 'Claim SiteGround Deal →';
     } else {
-      resultTitle.textContent = 'Hostinger Premium Shared Hosting';
-      resultDesc.textContent = 'Ideal for personal blogs, portfolios, and new affiliate ventures. Host up to 100 websites with free domain, SSL, and 100GB SSD.';
-      resultPrice.innerHTML = '$2.99 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/month</span> <span style="color:#10b981; font-size:0.85rem; font-weight:700;">(Save 78%)</span>';
-      resultLink.href = 'review-hostinger.html#premium-plan';
-      resultLink.textContent = 'Claim Hostinger Premium Deal →';
+      resultTitle.textContent = 'SiteGround StartUp Hosting';
+      resultDesc.textContent = 'Ideal for personal blogs, portfolios, and new projects. Includes Google Cloud SSD storage, free daily backups, SSL, and 24/7 support.';
+      resultPrice.innerHTML = '$2.99 <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">/month</span> <span style="color:#10b981; font-size:0.85rem; font-weight:700;">(Save 83%)</span>';
+      resultLink.href = 'hosting.html#siteground';
+      resultLink.textContent = 'Claim StartUp Deal →';
     }
   }
 }
 
 // ----------------------------------------------------
-// 5. Hosting Savings & TCO Calculator
+// 5. Cloud Hosting Savings & TCO Calculator
 // ----------------------------------------------------
 function initSavingsCalculator() {
   const yearsSlider = document.getElementById('calcYearsSlider');
@@ -351,7 +349,7 @@ function initSavingsCalculator() {
   const sitesSlider = document.getElementById('calcSitesSlider');
   const sitesVal = document.getElementById('calcSitesVal');
   const savingsDisplay = document.getElementById('calcSavingsTotal');
-  const hostingerTotal = document.getElementById('calcHostingerTotal');
+  const promoTotal = document.getElementById('calcPromoTotal');
   const competitorTotal = document.getElementById('calcCompetitorTotal');
 
   if (!yearsSlider || !savingsDisplay) return;
@@ -363,17 +361,15 @@ function initSavingsCalculator() {
     if (yearsVal) yearsVal.textContent = `${years} Year${years > 1 ? 's' : ''}`;
     if (sitesVal) sitesVal.textContent = `${sites} Website${sites > 1 ? 's' : ''}`;
 
-    // Average industry competitor (e.g. SiteGround/Bluehost) standard renewal rate ~$11.99/mo per bundle
     const competitorMonthly = 12.99 + (sites > 5 ? 10 : 0);
-    // Hostinger promotional bundle rate with STR affiliate discount ~$2.99/mo
-    const hostingerMonthly = 2.99;
+    const promoMonthly = 2.99;
 
     const competitorSum = Math.round(competitorMonthly * 12 * years);
-    const hostingerSum = Math.round(hostingerMonthly * 12 * years);
-    const totalSavings = competitorSum - hostingerSum;
+    const promoSum = Math.round(promoMonthly * 12 * years);
+    const totalSavings = competitorSum - promoSum;
 
     savingsDisplay.textContent = `$${totalSavings.toLocaleString()}`;
-    if (hostingerTotal) hostingerTotal.textContent = `$${hostingerSum.toLocaleString()}`;
+    if (promoTotal) promoTotal.textContent = `$${promoSum.toLocaleString()}`;
     if (competitorTotal) competitorTotal.textContent = `$${competitorSum.toLocaleString()}`;
   }
 

@@ -9,13 +9,13 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       margin: 0;
-      background-color: #f8fafc;
+      background-color: #fafaf8;
     }
     /* Token Auth Helper Overlay */
     .token-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(9, 13, 22, 0.65);
       backdrop-filter: blur(6px);
       display: none;
       align-items: center;
@@ -33,16 +33,16 @@
       max-width: 480px;
       width: 100%;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      border: 1px solid #e2e8f0;
+      border: 1px solid #e4e4e0;
     }
     .token-modal h2 {
       margin: 0 0 0.5rem 0;
       font-size: 1.4rem;
-      color: #0f172a;
+      color: #090d16;
     }
     .token-modal p {
       font-size: 0.925rem;
-      color: #64748b;
+      color: #52525b;
       line-height: 1.5;
       margin-bottom: 1.5rem;
     }
@@ -57,12 +57,12 @@
       outline: none;
     }
     .token-input:focus {
-      border-color: #0062ff;
-      box-shadow: 0 0 0 3px rgba(0, 98, 255, 0.15);
+      border-color: #4f46e5;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
     }
     .btn-submit {
       width: 100%;
-      background: #0062ff;
+      background: #4f46e5;
       color: #ffffff;
       font-weight: 700;
       font-size: 0.95rem;
@@ -73,13 +73,13 @@
       transition: background 0.2s;
     }
     .btn-submit:hover {
-      background: #0050d4;
+      background: #4338ca;
     }
     .token-link {
       display: inline-block;
       margin-top: 1rem;
       font-size: 0.85rem;
-      color: #0062ff;
+      color: #4f46e5;
       text-decoration: underline;
     }
   </style>
@@ -94,11 +94,11 @@
         <h2 style="margin: 0;">Connect to GitHub</h2>
       </div>
       <p>
-        Because your site is hosted directly on <strong>Hostinger</strong>, connect securely using a GitHub Personal Access Token (with <code>repo</code> access). You only need to enter this once.
+        Connect securely using a GitHub Personal Access Token (with <code>repo</code> access). You only need to enter this once.
       </p>
 
       <form id="tokenForm">
-        <label for="ghToken" style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.4rem;">
+        <label for="ghToken" style="display: block; font-size: 0.85rem; font-weight: 600; color: #27272a; margin-bottom: 0.4rem;">
           GitHub Personal Access Token:
         </label>
         <input type="password" id="ghToken" class="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" required autocomplete="off">

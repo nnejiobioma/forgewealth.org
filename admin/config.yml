@@ -23,15 +23,15 @@ collections:
     fields:
       - { label: "Product / Service Title", name: "title", widget: "string" }
       - { label: "Category", name: "category", widget: "select", options: [
-          { label: "Web Hosting", value: "hosting" },
+          { label: "Cloud & Hosting", value: "hosting" },
           { label: "Laptops & PCs", value: "laptops" },
           { label: "Audio & Headphones", value: "audio" },
           { label: "Accessories & Desk Setup", value: "accessories" }
         ], default: "laptops" }
       - { label: "Rating Score (out of 10)", name: "score", widget: "string", default: "9.5" }
       - { label: "Price Display", name: "price", widget: "string", hint: "e.g. $2.99/mo or $1,499.00" }
-      - { label: "Original Price (Optional)", name: "original_price", widget: "string", required: false, hint: "e.g. $11.99/mo" }
-      - { label: "Affiliate Link (Target URL)", name: "affiliate_url", widget: "string", hint: "Your affiliate tracking link (Hostinger, Amazon, etc.)" }
+      - { label: "Original Price (Optional)", name: "original_price", widget: "string", required: false, hint: "e.g. $17.99/mo" }
+      - { label: "Affiliate Link (Target URL)", name: "affiliate_url", widget: "string", hint: "Your affiliate tracking link (Amazon, SiteGround, Cloudways, etc.)" }
       - { label: "Coupon Code (Optional)", name: "coupon_code", widget: "string", required: false, default: "STRDEAL" }
       - { label: "Badge Label (Optional)", name: "badge", widget: "string", required: false, hint: "e.g. Editor's Choice, Top Pick, Best Value" }
       - { label: "Card Thumbnail Image", name: "thumbnail", widget: "image", default: "assets/tech-gear.jpg" }
@@ -47,6 +47,6 @@ collections:
         name: "banner"
         label: "Top Deal Banner"
         fields:
-          - { label: "Announcement Text", name: "banner_text", widget: "string", default: "Hostinger Flash Sale: Get up to 78% OFF + Free Domain & SSL" }
+          - { label: "Announcement Text", name: "banner_text", widget: "string", default: "2026 Tech & Cloud Hardware Drops: Save up to 83% OFF Top-Rated Gear & Hosting" }
           - { label: "Coupon Code", name: "coupon_code", widget: "string", default: "STRDEAL" }
-          - { label: "Deal Link", name: "deal_link", widget: "string", default: "review-hostinger.html" }
+          - { label: "Deal Link", name: "deal_link", widget: "string", default: "gadgets.html" }
