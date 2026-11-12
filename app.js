@@ -261,6 +261,11 @@ async function initPostPage() {
       </a>
     `).join('');
   }
+
+  if (typeof window.impactStat === 'function') {
+    window.impactStat('transformLinks');
+    window.impactStat('trackImpression');
+  }
 }
 
 // Automatically discover any new posts added via Decap CMS (/admin) on GitHub
